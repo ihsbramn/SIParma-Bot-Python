@@ -27,8 +27,8 @@ from pprint import print
 ```
 
 ## Contributing
-- @ihsbramn
+- [Ikhsan Abdurachman](https://github.com/ihsbramn)
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) @2021 ihsbramn
