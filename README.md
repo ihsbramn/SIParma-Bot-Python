@@ -28,7 +28,8 @@ from pprint import print
 
 ## Contributing
 - [Ikhsan Abdurachman](https://github.com/ihsbramn)
+- [Rizky Fadilah](https://github.com/rizkyfadilah22)
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/) @2021 [ihsbramn](https://github.com/ihsbramn)
+[MIT](https://choosealicense.com/licenses/mit/) @2021 [ihsbramn](https://github.com/ihsbramn) [rizkyfadilah22](https://github.com/rizkyfadilah22)
