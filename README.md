@@ -31,4 +31,4 @@ from pprint import print
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/) @2021 ihsbramn
+[MIT](https://choosealicense.com/licenses/mit/) @2021 [ihsbramn](https://github.com/ihsbramn)
