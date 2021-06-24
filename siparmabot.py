@@ -1,8 +1,6 @@
 import telepot
 import time
 import pymysql
-import json
-import requests
 from telepot.loop import MessageLoop
 from pprint import pprint
 
@@ -40,10 +38,10 @@ def handle(msg):
         host = str(args[1]), str(args[2]), str(
             args[3]), str(args[4]), str(sender_id), str(sender_username), str(status)
         cursor.execute(
-            "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_usernamesender,report_status) VALUE('%s','%s','%s','%s','%s','%s','%s')" % (host))
+            "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,report_status) VALUE('%s','%s','%s','%s','%s','%s','%s')" % (host))
         db.commit()
         bot.sendMessage(
-            chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\nStatus : ' + status)
+            chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
 
     if command == '/cek':
         host = str(args[1])
@@ -56,16 +54,20 @@ def handle(msg):
                 output = "Data Ditemukan 😉" + '\n' + "\nID Moban : " + \
                     str(row[0]) + "\nJenis Order : " + row[1] + "\nNo Order : " + row[2] + \
                     '\nUsername Pelapor : ' + '@' + \
-                    row[6] + '\nStatus : ' + row[7]
+                    row[6] + '\n \nStatus : ' + row[7]
         else:
             output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
 
         bot.sendMessage(
             chatid, output)
 
-    if command == '/test':
+    if command == '/testid':
         bot.sendMessage(
-            chatid, 'ID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + sender_username)
+            chatid, 'ID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username)
+
+    if command == '/help':
+        bot.sendMessage(
+            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban \n /cek (ID Moban)')
 
 
 MessageLoop(bot, handle).run_as_thread()
