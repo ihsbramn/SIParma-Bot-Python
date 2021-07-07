@@ -46,10 +46,31 @@ def handle(msg):
         bot.sendMessage(
             chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
 
-    if command == '/cek':
+    if command == '/cekid':
         host = str(args[1])
         cursor.execute(
             "SELECT * FROM reports WHERE id = '%s'" % (host))
+        hasil = cursor.fetchall()
+
+        if cursor.rowcount > 0:
+            for row in hasil:
+                output = "Data Ditemukan 😉" + '\n' + "\nID Moban : " + \
+                    str(row[0]) + "\nJenis Order : " + row[1] + "\nSC ID : " + row[2] + \
+                    '\nUsername Pelapor : ' + '@' + \
+                    row[6] + '\nNama Pelapor : ' + \
+                    row[7] + '\nKeluhan : '+row[3] + ' ' + \
+                    row[4] + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
+                    str(row[18]) + '\nStatus : ' + row[8]
+        else:
+            output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
+
+        bot.sendMessage(
+            chatid, output)
+
+    if command == '/ceksc':
+        host = str(args[1])
+        cursor.execute(
+            "SELECT * FROM reports WHERE report_number = '%s'" % (host))
         hasil = cursor.fetchall()
 
         if cursor.rowcount > 0:
@@ -74,7 +95,7 @@ def handle(msg):
 
     if command == '/help':
         bot.sendMessage(
-            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban \n /cek (ID Moban)')
+            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /ceksc (#NOSC)')
 
 
 MessageLoop(bot, handle).run_as_thread()
