@@ -14,7 +14,7 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('1786482522:AAEKQOpHgMgtWV_IVpGv9Ldz6c_j57Eal04')
+bot = telepot.Bot('1786482522:AAES4KDR4jJiMue-Bu0x9iCqe9XF84C1y5c')
 chatid = ('-478142407')
 # auth
 
@@ -26,7 +26,7 @@ bot.sendMessage(
 def handle(msg):
     sender_id = msg['from']['id']
     sender_username = msg['from']['username']
-    sender_name = msg['from']['first_name'] + ' ' + msg['from']['last_name']
+    sender_name = msg['from']['first_name']
     id_group = msg['chat']['id']
     text = msg['text']
     args = text.split()
@@ -59,7 +59,7 @@ def handle(msg):
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
-                    row[4] + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
+                    row[4] + '\n\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
                     str(row[18]) + '\nStatus : ' + row[8]
         else:
             output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
@@ -80,7 +80,7 @@ def handle(msg):
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
-                    row[4] + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
+                    row[4] + '\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
                     str(row[18]) + '\nStatus : ' + row[8]
         else:
             output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
