@@ -14,8 +14,8 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('1786482522:AAFFNIE_YWI7efjm8SX-pr54MvWatKtQOIY')
-chatid = ('-478142407')
+bot = telepot.Bot('BOT_TOKEN')
+chatid = ('ID_GROUP')
 # auth
 
 print('connect succeed at ' + str(db))
