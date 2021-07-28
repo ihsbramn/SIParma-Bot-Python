@@ -14,11 +14,12 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('BOT_TOKEN')
-chatid = ('CHAT_ID')
+bot = telepot.Bot('1786482522:AAFFNIE_YWI7efjm8SX-pr54MvWatKtQOIY')
+chatid = ('-478142407')
 # auth
 
-print(db + 'connect')
+print('connect succeed at ' + str(db))
+
 bot.sendMessage(
     chatid, 'Selamat datang di SIParmaBot \nSiParma Siap Membantu anda! 😉 ')
 
