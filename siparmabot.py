@@ -14,12 +14,8 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('BOT_TOKEN')
-<<<<<<< HEAD
-chatid = ('CHAT_ID')
-=======
-chatid = ('ID_GROUP')
->>>>>>> d26994a1256e2a54b8d6b19f8513bd63c53c4911
+bot = telepot.Bot('1786482522:AAFFNIE_YWI7efjm8SX-pr54MvWatKtQOIY')
+chatid = ('-478142407')
 # auth
 
 print('connect succeed at ' + str(db))
@@ -75,7 +71,7 @@ def handle(msg):
         bot.sendMessage(
             chatid, output)
 
-    if command == '/ceksc':
+    if command == '/cekno':
         db.commit()
         host = str(args[1])
         cursor.execute(
@@ -105,7 +101,7 @@ def handle(msg):
 
     if command == '/help':
         bot.sendMessage(
-            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /ceksc (#NOSC)')
+            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
 
     # if command == '/kirimbukti':
     #     bot.sendMessage(chatid, 'silahkan kirim file nya ')
