@@ -14,8 +14,8 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('1786482522:AAFFNIE_YWI7efjm8SX-pr54MvWatKtQOIY')
-chatid = ('-478142407')
+bot = telepot.Bot('BOT_TOKEN')
+chatid = ('CHAT_ID')
 # auth
 
 print('connect succeed at ' + str(db))
@@ -33,6 +33,7 @@ def handle(msg):
     args = text.split()
     command = args[0]
     status = ('open')
+    msg_id = msg['message_id']
 
     if command == '/start':
         bot.sendMessage(
@@ -41,9 +42,9 @@ def handle(msg):
     if command == '/moban':
         db.commit()
         host = str(args[1]), str(args[2]), str(
-            args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status)
+            args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status), str(msg_id)
         cursor.execute(
-            "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status) VALUE('%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
+            "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status,msg_id) VALUE('%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
         db.commit()
         bot.sendMessage(
             chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
@@ -58,7 +59,7 @@ def handle(msg):
         if cursor.rowcount > 0:
             for row in hasil:
                 output = "Data Ditemukan 😉" + '\n' + "\nID Moban : " + \
-                    str(row[0]) + "\nJenis Order : " + row[1] + "\nSC ID : " + row[2] + \
+                    str(row[0]) + "\nJenis Order : " + row[1] + "\nNo Order : " + row[2] + \
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
@@ -80,7 +81,7 @@ def handle(msg):
         if cursor.rowcount > 0:
             for row in hasil:
                 output = "Data Ditemukan 😉" + '\n' + "\nID Moban : " + \
-                    str(row[0]) + "\nJenis Order : " + row[1] + "\nSC ID : " + row[2] + \
+                    str(row[0]) + "\nJenis Order : " + row[1] + "\nNo Order : " + row[2] + \
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
