@@ -15,7 +15,11 @@ cursor = db.cursor()
 
 # auth
 bot = telepot.Bot('BOT_TOKEN')
+<<<<<<< HEAD
 chatid = ('CHAT_ID')
+=======
+chatid = ('ID_GROUP')
+>>>>>>> d26994a1256e2a54b8d6b19f8513bd63c53c4911
 # auth
 
 print('connect succeed at ' + str(db))
