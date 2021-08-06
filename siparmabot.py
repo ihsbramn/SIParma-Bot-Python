@@ -63,7 +63,7 @@ def handle(msg):
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
-                    row[4] + '\n\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
+                    row[4] + '\n\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[10]) + '\n(OGP->ESKALASI) : ' + str(row[11]) + '\n(OGP->CLOSED) : ' + str(row[12]) + '\n(ESKALASI->CLOSED) : ' + str(row[13]) + '\n\nWaktu Terakhir Update : \n' + \
                     str(row[18]) + '\nStatus : ' + row[8]
         else:
             output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
@@ -85,7 +85,7 @@ def handle(msg):
                     '\nUsername Pelapor : ' + '@' + \
                     row[6] + '\nNama Pelapor : ' + \
                     row[7] + '\nKeluhan : '+row[3] + ' ' + \
-                    row[4] + '\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[9]) + '\n(OGP->ESKALASI) : ' + str(row[10]) + '\n(OGP->CLOSED) : ' + str(row[11]) + '\n(ESKALASI->CLOSED) : ' + str(row[12]) + '\n\nWaktu Terakhir Update : \n' + \
+                    row[4] + '\nUpdate by : ' + '\n\n(OPEN->OGP) : ' + str(row[10]) + '\n(OGP->ESKALASI) : ' + str(row[11]) + '\n(OGP->CLOSED) : ' + str(row[12]) + '\n(ESKALASI->CLOSED) : ' + str(row[13]) + '\n\nWaktu Terakhir Update : \n' + \
                     str(row[18]) + '\nStatus : ' + row[8]
         else:
             output = "Data ID Moban " + host + " Tidak ditemukan ☹️"
