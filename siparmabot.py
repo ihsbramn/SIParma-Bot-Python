@@ -1,9 +1,11 @@
+from pprint import pprint
+from telepot.loop import MessageLoop
 import telepot
 import time
+import datetime
 import pymysql
 import json
-from telepot.loop import MessageLoop
-from pprint import pprint
+import threading
 
 db = pymysql.connect(
     host="localhost",
@@ -14,8 +16,8 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('1786482522:AAFFNIE_YWI7efjm8SX-pr54MvWatKtQOIY')
-chatid = ('-478142407')
+bot = telepot.Bot('1786482522:AAGr0iIvsg86HE9pVAf3heIhSbjklISTvTA')
+chatid = ('-376176011')
 # auth
 
 print('connect succeed at ' + str(db))
@@ -103,12 +105,29 @@ def handle(msg):
         bot.sendMessage(
             chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
 
-    # if command == '/kirimbukti':
-    #     bot.sendMessage(chatid, 'silahkan kirim file nya ')
-    #     response = bot.getUpdates()
-    #     aw = (json.dumps(response, indent=4, sort_keys=True))
-    #     print(aw)
-    #     bot.sendMessage(chatid, aw)
+
+# cek koneksi every 1 menit
+datetime.datetime.now()
+
+
+def printit():
+    threading.Timer(30.0, printit).start()
+    print('Cek Connection ' + str(db) +
+          ' Waktu : ' + str(datetime.datetime.now()))
+
+
+printit()
+# cek koneksi every 15 menit
+datetime.datetime.now()
+
+
+def sendit():
+    threading.Timer(900.0, sendit).start()
+    bot.sendMessage(
+        chatid, 'Cek Connection ' + str(db) + ' Waktu : ' + str(datetime.datetime.now()))
+
+
+sendit()
 
 
 MessageLoop(bot, handle).run_as_thread()
