@@ -1,6 +1,6 @@
 # SIParma_Bot
 
-Bot Pelaporan with python 3.9.0
+Bot Pelaporan build with python 3.9.0
 
 ## Installation
 
