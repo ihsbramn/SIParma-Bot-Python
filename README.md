@@ -8,7 +8,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to all packages.
 
 ```bash
 
-pip install telepot
+pip install telepota
 pip install time
 pip install pymysql
 
