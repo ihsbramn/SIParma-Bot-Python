@@ -18,11 +18,16 @@ pip install pymysql
 
 ```python
 
+from pprint import pprint
+from telepot.loop import MessageLoop
 import telepot
 import time
+import datetime
 import pymysql
-from telepot.loop import MessageLoop
-from pprint import print
+import json
+import threading
+import logging
+import sys
 
 ```
 
