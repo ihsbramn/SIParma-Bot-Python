@@ -19,8 +19,8 @@ db = pymysql.connect(
 cursor = db.cursor()
 
 # auth
-bot = telepot.Bot('token')
-chatid = ('chatid')
+bot = telepot.Bot('1910273149:AAHoDFg9CUKSmOPnlOjsujKdrvlOtihbilY')
+chatid = ('-567532393')
 # auth
 
 print('connect succeed at ' + str(db))
@@ -117,7 +117,7 @@ def handle(msg):
 datetime.datetime.now()
 
 # logging
-logging.basicConfig(stream=sys.stdout, level=logging.INFO,)
+logging.basicConfig(stream=sys.stdout, level=logging.ERROR)
 
 
 # check db
