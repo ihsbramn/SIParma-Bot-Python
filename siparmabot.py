@@ -6,6 +6,9 @@ import datetime
 import pymysql
 import json
 import threading
+import os
+import logging
+import sys
 
 db = pymysql.connect(
     host="localhost",
@@ -17,7 +20,7 @@ cursor = db.cursor()
 
 # auth
 bot = telepot.Bot('token')
-chatid = ('id')
+chatid = ('chatid')
 # auth
 
 print('connect succeed at ' + str(db))
@@ -106,30 +109,38 @@ def handle(msg):
             chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
 
 
-# cek koneksi every 1 menit
+# get date
 datetime.datetime.now()
 
+# get hostname
+hostnames = [
+    '192.168.1.1',
+    '192.168.1.5',
+]
 
+for hostname in hostnames:
+    response = os.system('ping -n 1 ' + hostname)
+    # if response == 0:
+    #     print(hostname, 'is up')
+    # else:
+    #     print(hostname, 'is down')
+
+# logging
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,)
+logging.basicConfig(stream=response, level=logging.DEBUG,)
+
+
+# check db
 def printit():
+
     threading.Timer(30.0, printit).start()
-    print('Cek Connection ' + str(db) +
-          ' Waktu : ' + str(datetime.datetime.now()))
+    print('Check DB Connection ' + str(db) +
+          ' Time : ' + str(datetime.datetime.now()))
 
 
 printit()
-# cek koneksi every 15 menit
-datetime.datetime.now()
 
-
-def sendit():
-    threading.Timer(900.0, sendit).start()
-    bot.sendMessage(
-        chatid, 'Cek Connection ' + str(db) + ' Waktu : ' + str(datetime.datetime.now()))
-
-
-sendit()
-
-
+# bot msg loop
 MessageLoop(bot, handle).run_as_thread()
 
 # RUNN
