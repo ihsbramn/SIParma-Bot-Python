@@ -45,14 +45,18 @@ def handle(msg):
             chatid, 'Selamat datang di SIParmaBot \nSiParma Siap Membantu anda! 😉 ')
 
     if command == '/moban':
-        db.commit()
-        host = str(args[1]), str(args[2]), str(
-            args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status), str(msg_id)
-        cursor.execute(
-            "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status,msg_id) VALUE('%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
-        db.commit()
-        bot.sendMessage(
-            chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
+        if args[1] == '#AO' or args[1] == '#MO' or args[1] == '#GGN' or args[1] == '#PDA' or args[1] == '#MIG':
+            db.commit()
+            host = str(args[1]), str(args[2]), str(
+                args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status), str(msg_id)
+            cursor.execute(
+                "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status,msg_id) VALUE('%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
+            db.commit()
+            bot.sendMessage(
+                chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
+        else:
+            bot.sendMessage(
+                chatid, 'Format Salah ❗️ \n \nSilahkan input dengan format berikut : \n Contoh : /moban #MO #SC123456 #ganti router \n \n Jenis Order : \n-#AO\n-#GGN\n-#MO\n-#PDA\n-#MIG')
 
     if command == '/cekid':
         db.commit()
@@ -106,28 +110,14 @@ def handle(msg):
 
     if command == '/help':
         bot.sendMessage(
-            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n Contoh : /moban #AO #SCxxxxx #fallout yyyyy \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
+            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n\n Contoh : /moban #MO #SC123456 #ganti router \n \n Jenis Order : \n-#AO\n-#GGN\n-#MO\n-#PDA\n-#MIG \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
 
 
 # get date
 datetime.datetime.now()
 
-# get hostname
-hostnames = [
-    '192.168.1.1',
-    '192.168.1.5',
-]
-
-for hostname in hostnames:
-    response = os.system('ping -n 1 ' + hostname)
-    # if response == 0:
-    #     print(hostname, 'is up')
-    # else:
-    #     print(hostname, 'is down')
-
 # logging
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,)
-logging.basicConfig(stream=response, level=logging.DEBUG,)
+logging.basicConfig(stream=sys.stdout, level=logging.INFO,)
 
 
 # check db
