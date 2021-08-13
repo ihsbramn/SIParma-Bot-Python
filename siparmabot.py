@@ -6,7 +6,6 @@ import datetime
 import pymysql
 import json
 import threading
-import os
 import logging
 import sys
 
@@ -26,7 +25,7 @@ chatid = ('chatid')
 print('connect succeed at ' + str(db))
 
 bot.sendMessage(
-    chatid, 'Selamat datang di SIParmaBot \nSiParma Siap Membantu anda! 😉 ')
+    chatid, 'Selamat datang di BMW-Semarang Bot \nBMW-Semarang  Siap Membantu anda! 😉 ')
 
 
 def handle(msg):
@@ -42,15 +41,15 @@ def handle(msg):
 
     if command == '/start':
         bot.sendMessage(
-            chatid, 'Selamat datang di SIParmaBot \nSiParma Siap Membantu anda! 😉 ')
+            chatid, 'Selamat datang di BMW-Semarang Bot \nBMW-Semarang  Siap Membantu anda! 😉 ')
 
     if command == '/moban':
         if args[1] == '#AO' or args[1] == '#MO' or args[1] == '#GGN' or args[1] == '#PDA' or args[1] == '#MIG':
             db.commit()
             host = str(args[1]), str(args[2]), str(
-                args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status), str(msg_id)
+                args[3]), str(args[4]), str(sender_id), str(sender_username), str(sender_name), str(status), str(msg_id), str(id_group)
             cursor.execute(
-                "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status,msg_id) VALUE('%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
+                "INSERT INTO reports(report_type,report_number,report_value,report_detail,report_idsender,report_sender,sender_name,report_status,msg_id,id_group) VALUE('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')" % (host))
             db.commit()
             bot.sendMessage(
                 chatid, 'Moban Diterima! 👍' + '\n' + '\nID Moban : ' + str(cursor.lastrowid) + '\nID Pengirim : ' + str(sender_id) + '\nUsername Pengirim : ' + '@'+sender_username + '\n \nStatus : ' + status)
@@ -110,7 +109,7 @@ def handle(msg):
 
     if command == '/help':
         bot.sendMessage(
-            chatid, 'SIParma Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n\n Contoh : /moban #MO #SC123456 #ganti router \n \n Jenis Order : \n-#AO\n-#GGN\n-#MO\n-#PDA\n-#MIG \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
+            chatid, 'BMW-Semarang  Bot \n \n- Format Moban \n /moban<spasi>#jenisorder<spasi>#(no-order)<spasi>#(deskripsi) \n\n Contoh : /moban #MO #SC123456 #ganti router \n \n Jenis Order : \n-#AO\n-#GGN\n-#MO\n-#PDA\n-#MIG \n \n- Format Cek Moban  \n /cekid (ID Moban)\n /cekno (No Order / No SC)')
 
 
 # get date
