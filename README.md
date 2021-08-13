@@ -1,6 +1,6 @@
 # SIParma_Bot
 
-Bot Pelaporan
+Bot Pelaporan build with python 3.9.0
 
 ## Installation
 
@@ -8,7 +8,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to all packages.
 
 ```bash
 
-pip install telepot
+pip install telepota
 pip install time
 pip install pymysql
 
@@ -18,11 +18,16 @@ pip install pymysql
 
 ```python
 
+from pprint import pprint
+from telepot.loop import MessageLoop
 import telepot
 import time
+import datetime
 import pymysql
-from telepot.loop import MessageLoop
-from pprint import print
+import json
+import threading
+import logging
+import sys
 
 ```
 
